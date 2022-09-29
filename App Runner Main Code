@@ -1,0 +1,17 @@
+//
+//  TrialRun001App.swift
+//  TrialRun001
+//
+//  Created by Vincent Crenshaw on 7/27/22.
+//
+
+import SwiftUI
+
+@main
+struct TrialRun001App: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
