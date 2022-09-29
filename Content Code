@@ -1,0 +1,216 @@
+//
+//  ContentView.swift
+//  TrialRun001
+//
+//  Created by Vincent Crenshaw on 7/27/22.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State var s1 = "apolloSlot"
+    @State var s2 = "apolloSlot"
+    @State var s3 = "apolloSlot"
+    @State var creditScore = 1000
+    func spin() {
+        creditScore -= 3
+        let firstRand = Int.random(in: 1...10)
+        let secondRand = Int.random(in: 1...10)
+        let thirdRand = Int.random(in: 1...10)
+        switch firstRand {
+        case 1:
+            s1 = "zeusSlot"
+        case 2:
+            s1 = "poseidonSlot"
+        case 3:
+            s1 = "hadesSlot"
+        case 4:
+            s1 = "aphroditeSlot"
+        case 5:
+            s1 = "apolloSlot"
+        case 6:
+            s1 = "artemisSlot"
+        case 7:
+            s1 = "aresSlot"
+        case 8:
+            s1 = "athenaSlot"
+        case 9:
+            s1 = "demeterSlot"
+        default:
+            s1 = "dionysusSlot"
+        }
+        switch secondRand {
+        case 1:
+            s2 = "zeusSlot"
+        case 2:
+            s2 = "poseidonSlot"
+        case 3:
+            s2 = "hadesSlot"
+        case 4:
+            s2 = "aphroditeSlot"
+        case 5:
+            s2 = "apolloSlot"
+        case 6:
+            s2 = "artemisSlot"
+        case 7:
+            s2 = "aresSlot"
+        case 8:
+            s2 = "athenaSlot"
+        case 9:
+            s2 = "demeterSlot"
+        default:
+            s2 = "dionysusSlot"
+        }
+        switch thirdRand {
+        case 1:
+            s3 = "zeusSlot"
+        case 2:
+            s3 = "poseidonSlot"
+        case 3:
+            s3 = "hadesSlot"
+        case 4:
+            s3 = "aphroditeSlot"
+        case 5:
+            s3 = "apolloSlot"
+        case 6:
+            s3 = "artemisSlot"
+        case 7:
+            s3 = "aresSlot"
+        case 8:
+            s3 = "athenaSlot"
+        case 9:
+            s3 = "demeterSlot"
+        default:
+            s3 = "dionysusSlot"
+        }
+    }
+    
+    func score() {
+        if s1 == s2 && s2 == s3 {
+            switch s3 {
+            case "zeusSlot":
+                creditScore += 300
+            case "poseidonSlot":
+                creditScore += 30
+            case "hadesSlot":
+                creditScore += 15
+            case "aphroditeSlot":
+                creditScore += 12
+            case "apolloSlot":
+                creditScore += 15
+            case "artemisSlot":
+                creditScore += 15
+            case "aresSlot":
+                creditScore += 12
+            case "athenaSlot":
+                creditScore += 30
+            case "demeterSlot":
+                creditScore += 10
+            default:
+                creditScore += 100
+            }
+        }
+        
+        if s1 == s2 && s2 != s3 {
+            switch s1 {
+            case "zeusSlot":
+                creditScore += 6
+            case "poseidonSlot":
+                creditScore += 2
+            case "hadesSlot":
+                creditScore += 2
+            case "aphroditeSlot":
+                creditScore += 2
+            case "apolloSlot":
+                creditScore += 3
+            case "artemisSlot":
+                creditScore += 3
+            case "aresSlot":
+                creditScore += 4
+            case "athenaSlot":
+                creditScore += 4
+            case "demeterSlot":
+                creditScore += 2
+            default:
+                creditScore += 2
+            }
+        }
+        
+        if s3 == s2 && s1 != s3 {
+            switch s1 {
+            case "zeusSlot":
+                creditScore += 6
+            case "poseidonSlot":
+                creditScore += 2
+            case "hadesSlot":
+                creditScore += 2
+            case "aphroditeSlot":
+                creditScore += 2
+            case "apolloSlot":
+                creditScore += 3
+            case "artemisSlot":
+                creditScore += 3
+            case "aresSlot":
+                creditScore += 4
+            case "athenaSlot":
+                creditScore += 4
+            case "demeterSlot":
+                creditScore += 2
+            default:
+                creditScore += 2
+            }
+        }
+    }
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            Image("greekgodslots")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 300)
+            
+            Text("Credits : " + String(creditScore))
+                .padding(.top)
+            Spacer()
+            HStack {
+                Image(s1)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 90)
+                    
+                Image(s2)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 90)
+                
+                Image(s3)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 90)
+            }
+            Spacer()
+            Button {
+                spin()
+                score()
+            } label: {
+                ZStack {
+                    Capsule().foregroundColor(Color(hue: 0.312, saturation: 0.88, brightness: 0.588))
+                        .frame(width: 80, height: 25)
+                    Text("Spin")
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color.white)
+                } .fixedSize()
+                
+            }
+            Spacer()
+            Spacer()
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
